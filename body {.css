@@ -36,18 +36,20 @@ section {
     width: 100%;
     overflow: hidden; /* Hide images outside of the view */
     position: relative;
-    height: 300px; /* Adjust as per your image height */
+    height: 300px; /* Adjust height as per your image aspect ratio */
 }
 
 .image-container {
     display: flex; /* Align all images in a row */
-    width: calc(100% * 5); /* Adjust based on the number of images */
-    animation: slide 20s infinite; /* Animation for sliding */
+    width: 100%; /* Make container full width */
+    animation: slide 15s infinite; /* Animation for sliding */
 }
 
 .image-slider img {
     width: 100%; /* Each image will take up 100% of the slider's width */
     flex-shrink: 0; /* Prevent images from shrinking */
+    height: 100%; /* Ensure images take the full height of the slider */
+    object-fit: cover; /* Cover the container without distorting aspect ratio */
 }
 
 footer {
@@ -64,25 +66,37 @@ footer {
     0% {
         transform: translateX(0); /* Start at the original position */
     }
-    20% {
+    10% {
+        transform: translateX(0); /* Hold position for the first 1.5 seconds */
+    }
+    15% {
         transform: translateX(-100%); /* Slide to the left */
     }
     25% {
-        transform: translateX(-100%); /* Hold position for a moment */
+        transform: translateX(-100%); /* Hold position for the next 1.5 seconds */
     }
-    45% {
+    30% {
         transform: translateX(-200%); /* Slide further left */
     }
-    50% {
-        transform: translateX(-200%); /* Hold position for a moment */
+    40% {
+        transform: translateX(-200%); /* Hold position for the next 1.5 seconds */
     }
-    70% {
+    45% {
         transform: translateX(-300%); /* Slide further left */
     }
+    55% {
+        transform: translateX(-300%); /* Hold position for the next 1.5 seconds */
+    }
+    60% {
+        transform: translateX(-400%); /* Slide further left */
+    }
+    70% {
+        transform: translateX(-400%); /* Hold position for the next 1.5 seconds */
+    }
     75% {
-        transform: translateX(-300%); /* Hold position for a moment */
+        transform: translateX(0); /* Reset to the original position */
     }
     100% {
-        transform: translateX(0); /* Reset to the original position */
+        transform: translateX(0); /* Complete the cycle */
     }
 }
