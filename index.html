@@ -3,38 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team E Offroaders</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="js/slider.js" defer></script> <!-- Include JavaScript for animation -->
+    <title>Offroaders</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .header {
+            margin-bottom: 20px;
+        }
+        .logo {
+            height: 50px; /* Adjust height as needed */
+            vertical-align: middle;
+        }
+        .image-container {
+            position: relative;
+            display: inline-block;
+            margin: 20px 0;
+        }
+        .image {
+            max-width: 100%;
+            height: auto;
+            display: none; /* Hide images initially */
+        }
+        .active {
+            display: block; /* Show active image */
+        }
+        .nav-button {
+            cursor: pointer;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin: 5px;
+        }
+        .nav-button:hover {
+            background-color: #0056b3;
+        }
+        .menu {
+            margin: 20px 0;
+        }
+        .menu a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #007BFF;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to Team E Offroaders</h1>
-        <!-- Add Navigation Tabs -->
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="header">
+        <h1>Offroaders</h1>
+        <img src="path_to_logo.png" alt="Logo" class="logo"> <!-- Replace with your logo path -->
+    </div>
+    <h2>B.V. Raju Institute of Technology</h2>
 
-    <section id="gallery">
-        <h2>Our Journey in SAE BAJA</h2>
-        <div class="image-slider">
-            <div class="image-container">
-                <img src="images/atvc.jpg" alt="ATVC 1">
-                <img src="images/atvc1.jpg" alt="ATVC 2">
-                <img src="images/Screenshot_2024-04-25-11-34-36-86_1c337646f29875672b5a61192b9010f9.jpg" alt="Competition Moment 1">
-                <img src="images/Screenshot_2024-04-25-11-38-01-51_1c337646f29875672b5a61192b9010f9.jpg" alt="Competition Moment 2">
-            </div>
-        </div>
-    </section>
+    <div class="image-container">
+        <img src="path_to_image_1.jpg" alt="Image 1" class="image active">
+        <img src="path_to_image_2.jpg" alt="Image 2" class="image">
+        <img src="path_to_image_3.jpg" alt="Image 3" class="image">
+        <img src="path_to_image_4.jpg" alt="Image 4" class="image">
+        <img src="path_to_image_5.jpg" alt="Image 5" class="image">
+        
+        <button class="nav-button" onclick="prevImage()">&#10094; Prev</button>
+        <button class="nav-button" onclick="nextImage()">Next &#10095;</button>
+    </div>
 
-    <footer>
-        <p>© 2024 Team E Offroaders. All rights reserved.</p>
-    </footer>
+    <div class="menu">
+        <a href="#about-us">About Us</a>
+        <a href="#our-vision">Our Vision</a>
+    </div>
+
+    <div id="about-us">
+        <h3>About Us</h3>
+        <p>Write a brief description about your organization here.</p>
+    </div>
+
+    <div id="our-vision">
+        <h3>Our Vision</h3>
+        <p>Describe your vision here.</p>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.image');
+
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.remove('active');
+                if (i === index) {
+                    img.classList.add('active');
+                }
+            });
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage(currentIndex);
+        }
+    </script>
 </body>
 </html>
