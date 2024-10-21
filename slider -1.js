@@ -1,23 +1,21 @@
+const imageContainer = document.querySelector('.image-container');
 const images = document.querySelectorAll('.image-slider img');
 let currentIndex = 0;
-let previousIndex = images.length - 1; // Start with the last image hidden
 
 function slideImages() {
-    // Remove active class from the current image
-    images[previousIndex].classList.remove('active');
-    images[previousIndex].classList.add('previous');
-
-    // Set the current image as active
-    images[currentIndex].classList.add('active');
-    images[currentIndex].classList.remove('previous');
-
-    // Update indexes for the next cycle
-    previousIndex = currentIndex;
-    currentIndex = (currentIndex + 1) % images.length; // Loop back to the first image after the last one
+    // Calculate how much to move the image container
+    const imageWidth = images[0].clientWidth; // Get the width of one image
+    const newTranslateX = -currentIndex * imageWidth;
+    
+    // Apply the transformation to move images
+    imageContainer.style.transform = `translateX(${newTranslateX}px)`;
+    
+    // Move to the next image, looping back to the first image at the end
+    currentIndex = (currentIndex + 1) % images.length;
 }
 
-// Start the image slide every 3 seconds
+// Slide images every 3 seconds
 setInterval(slideImages, 3000);
 
-// Initial setup
+// Initial setup to show the first image
 slideImages();
