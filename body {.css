@@ -41,7 +41,8 @@ section {
 
 .image-container {
     display: flex; /* Align all images in a row */
-    transition: transform 1s ease-in-out; /* Smooth transition for movement */
+    width: calc(100% * 5); /* Adjust based on the number of images */
+    animation: slide 20s infinite; /* Animation for sliding */
 }
 
 .image-slider img {
@@ -56,4 +57,32 @@ footer {
     position: fixed;
     width: 100%;
     bottom: 0;
+}
+
+/* Animation Keyframes */
+@keyframes slide {
+    0% {
+        transform: translateX(0); /* Start at the original position */
+    }
+    20% {
+        transform: translateX(-100%); /* Slide to the left */
+    }
+    25% {
+        transform: translateX(-100%); /* Hold position for a moment */
+    }
+    45% {
+        transform: translateX(-200%); /* Slide further left */
+    }
+    50% {
+        transform: translateX(-200%); /* Hold position for a moment */
+    }
+    70% {
+        transform: translateX(-300%); /* Slide further left */
+    }
+    75% {
+        transform: translateX(-300%); /* Hold position for a moment */
+    }
+    100% {
+        transform: translateX(0); /* Reset to the original position */
+    }
 }
