@@ -34,25 +34,19 @@ section {
 
 .image-slider {
     width: 100%;
-    overflow: hidden; /* Hide images outside the view */
+    overflow: hidden; /* Hide images outside of the view */
     position: relative;
-    height: 300px;
+    height: 300px; /* Adjust as per your image height */
+}
+
+.image-container {
+    display: flex; /* Align all images in a row */
+    transition: transform 1s ease-in-out; /* Smooth transition for movement */
 }
 
 .image-slider img {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 100%; /* Start outside the view */
-    transition: left 1s ease-in-out; /* Animation */
-}
-
-img.active {
-    left: 0; /* Move the active image to the visible area */
-}
-
-img.previous {
-    left: -100%; /* Move the previous image out of view */
+    width: 100%; /* Each image will take up 100% of the slider's width */
+    flex-shrink: 0; /* Prevent images from shrinking */
 }
 
 footer {
