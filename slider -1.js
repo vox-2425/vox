@@ -1,19 +1,22 @@
-// JavaScript to animate images moving left to right
-
 const images = document.querySelectorAll('.image-slider img');
 let currentIndex = 0;
+let previousIndex = images.length - 1; // Start with the last image hidden
 
 function slideImages() {
-    // Reset the transform property of all images
-    images.forEach((img, index) => {
-        img.style.transform = `translateX(${(index - currentIndex) * 100}%)`;
-    });
+    // Remove active class from the current image
+    images[previousIndex].classList.remove('active');
+    images[previousIndex].classList.add('previous');
 
-    // Move to the next image after 3 seconds
-    currentIndex = (currentIndex + 1) % images.length;
+    // Set the current image as active
+    images[currentIndex].classList.add('active');
+    images[currentIndex].classList.remove('previous');
+
+    // Update indexes for the next cycle
+    previousIndex = currentIndex;
+    currentIndex = (currentIndex + 1) % images.length; // Loop back to the first image after the last one
 }
 
-// Start the animation with a 3-second interval
+// Start the image slide every 3 seconds
 setInterval(slideImages, 3000);
 
 // Initial setup
